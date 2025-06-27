@@ -1,1 +1,1 @@
-My portfolio website: "https://nithinmukka.github.io/My-portfolio/"
+My portfolio website: https://nithinmukka.github.io/My-portfolio/
