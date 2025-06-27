@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// Removed MessageCircle and Coffee imports as they were unused in the previous update
-import { Mail, Send, Github, Linkedin, Twitter, MapPin, Clock } from 'lucide-react'; // Keep used icons
+import { Mail, Send, Github, Linkedin, Twitter, MapPin, Clock } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  // Form state kept as is (simulated submission)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,64 +28,59 @@ const Contact: React.FC = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     console.log('Form submitted:', formData);
-    // Reset form after simulated submission
     setFormData({ name: '', email: '', subject: '', message: '', projectType: 'web-app' });
     setIsSubmitting(false);
-    alert('Thanks for reaching out! I\'ll get back to you within 24 hours.'); // Success message
+    alert('Thanks for reaching out! I\'ll get back to you within 24 hours.');
   };
 
-  // Updated Contact Methods based on resume
   const contactMethods = [
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Me",
-      details: "nithinmukka51234@gmail.com", // Updated Email
+      details: "nithinmukka51234@gmail.com",
       description: "For project inquiries and collaborations",
-      link: "mailto:nithinmukka51234@gmail.com", // Updated Email Link
+      link: "mailto:nithinmukka51234@gmail.com",
       color: "from-amber-400 to-orange-400"
     },
     {
-      icon: <Linkedin className="w-6 h-6" />, // Using Linkedin icon
-      title: "Connect on LinkedIn", // Updated Title
-      details: "linkedin.com/in/mukka-nithin", // Updated Link
+      icon: <Linkedin className="w-6 h-6" />,
+      title: "Connect on LinkedIn",
+      details: "linkedin.com/in/mukka-nithin",
       description: "Let's connect professionally",
-      link: "https://linkedin.com/in/mukka-nithin", // Updated Link
-      color: "from-blue-600 to-blue-400" // Updated Color for LinkedIn
+      link: "https://linkedin.com/in/mukka-nithin",
+      color: "from-blue-600 to-blue-400"
     },
      {
-      icon: <Github className="w-6 h-6" />, // Using Github icon
-      title: "Explore My Code", // Updated Title
-      details: "github.com/NithinMukka", // Updated Link (Assuming this is main profile)
+      icon: <Github className="w-6 h-6" />,
+      title: "Explore My Code",
+      details: "github.com/NithinMukka",
       description: "See my repositories and contributions",
-      link: "https://github.com/NithinMukka", // Updated Link
-      color: "from-slate-700 to-slate-600" // Updated Color for Github
+      link: "https://github.com/NithinMukka",
+      color: "from-slate-700 to-slate-600"
     }
-    // Removed Coffee Chat as location info needs clarification relative to resume
   ];
 
-  // Updated Social Links based on resume
   const socialLinks = [
     {
       icon: <Github className="w-5 h-5" />,
       label: "GitHub",
-      url: "https://github.com/NithinMukka", // Updated Link
-      color: "hover:text-slate-400" // Keeping original hover color style
+      url: "https://github.com/NithinMukka",
+      color: "hover:text-slate-400"
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: "LinkedIn",
-      url: "https://linkedin.com/in/mukka-nithin", // Updated Link
-      color: "hover:text-blue-400" // Keeping original hover color style
+      url: "https://linkedin.com/in/mukka-nithin",
+      color: "hover:text-blue-400"
     },
     {
       icon: <Twitter className="w-5 h-5" />,
       label: "Twitter",
       url: "https://twitter.com", // Placeholder - Update if you have a Twitter
-      color: "hover:text-sky-400" // Keeping original hover color style
+      color: "hover:text-sky-400"
     }
   ];
 
-  // Project types kept as is
   const projectTypes = [
     { value: 'web-app', label: 'Web Application' },
     { value: 'mobile-app', label: 'Mobile App' },
@@ -276,17 +269,20 @@ const Contact: React.FC = () => {
                 <h4 className="text-lg font-semibold text-white">Availability</h4>
               </div>
               <div className="space-y-2 text-slate-300">
-                <p className="flex items-center space-x-2">
+                {/* CHANGED <p> to <div> here */}
+                <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                   <span>Available for new projects</span>
-                </p>
-                <p className="flex items-center space-x-2">
+                </div>
+                {/* CHANGED <p> to <div> here */}
+                <div className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4 text-slate-400" />
                   <span>Chennai, India (IST)</span> {/* Updated Location/Timezone */}
-                </p>
-                <p className="text-slate-400 text-sm mt-3">
+                </div>
+                {/* CHANGED <p> to <div> here */}
+                <div className="text-slate-400 text-sm mt-3"> {/* This one didn't have a div child, but changing for consistency */}
                   Typically respond within 24 hours
-                </p>
+                </div>
               </div>
             </div>
 

@@ -1,11 +1,11 @@
-import React from 'react'; // Keep React import for React.FC type and potential future uses
+import React from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import { useIntersectionObserver } from './hooks/useIntersectionObserver'; // Keep this import
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 
 function App() {
   const sectionIds = ['hero', 'about', 'skills', 'projects', 'contact'];
@@ -27,10 +27,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
+              {/* Updated Logo/Site Title in Footer */}
               <div className="flex items-center space-x-3">
-                {/* Updated Logo Placeholder */}
-                <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-lg"></div>
-                {/* Updated Site Title */}
+                {/* Footer Logo Element */}
+                <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-lg flex-shrink-0"></div>
+                {/* Footer Site Title */}
                 <span className="text-xl font-bold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
                   Mukka Nithin
                 </span>
@@ -90,6 +91,10 @@ function App() {
                   <span>TypeScript</span>
                   <span>•</span>
                   <span>Tailwind</span>
+                   {/* Added Flaticon attribution link here */}
+                   <span className="text-slate-600">
+                     <a href="https://www.flaticon.com/free-icons/portfolio" title="portfolio icons" className="hover:text-slate-400 transition-colors duration-300">Portfolio icons</a> created by <a href="https://www.freepik.com" title="Freepik" className="hover:text-slate-400 transition-colors duration-300">Freepik</a> - Flaticon
+                   </span>
                 </div>
               </div>
             </div>

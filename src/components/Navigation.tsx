@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// Removed 'index' import as it was unused and likely incorrect
-import { Menu, X, Circle } from 'lucide-react'; // Keep used icons
+// Included all used icons
+import { Menu, X, Circle, Github, Linkedin, Mail } from 'lucide-react';
 
 interface NavigationProps {
   activeSection: string;
@@ -11,12 +11,25 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const sections = [
-    { id: 'hero', label: 'Home' }, // Changed label from Start
-    { id: 'about', label: 'About' }, // Changed label from Story
-    { id: 'skills', label: 'Skills' }, // Changed label from Craft
-    { id: 'projects', label: 'Projects' }, // Changed label from Work
-    { id: 'contact', label: 'Contact' }, // Changed label from Connect
+    { id: 'hero', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'contact', label: 'Contact' },
   ];
+
+  // Effect to handle body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = ''; // Ensure scroll is re-enabled on unmount
+    };
+  }, [isMenuOpen]);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+      setIsMenuOpen(false); // Close menu after clicking a link
     }
   };
 
@@ -41,20 +54,30 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
     }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
-          {/* Updated Logo/Site Title */}
-          <div className="flex items-center space-x-3">
-            <div className="relative">
+
+          {/* Logo/Site Title block - Allow shrinking, but control children */}
+          {/* Removed flex-shrink-0 from this parent div to allow it to shrink */}
+          {/* Added min-w-0 to allow the name to truncate */}
+          {/* Adjusted space-x for responsiveness - Even tighter spacing */}
+          {/* Using space-x-1 (4px) on base, space-x-2 (8px) on sm, space-x-3 (12px) on lg */}
+          <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-3 min-w-0 flex-grow flex-shrink"> {/* ADDED flex-grow and flex-shrink */}
+            {/* Navigation Logo Element (Circle with Border) - Explicitly prevent shrinking */}
+            {/* Logo size is w-8 h-8 (32px x 32px) */}
+            <div className="relative flex-shrink-0"> {/* This ensures the icon stays 32x32 */}
               <Circle className="w-8 h-8 text-amber-400 fill-current" />
               <div className="absolute inset-0 w-8 h-8 border-2 border-emerald-400 rounded-full rotate-45"></div>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
+            {/* Navigation Site Title with responsive text size and truncation */}
+            {/* min-w-0 and truncate ensure the text handles overflow. flex-shrink allows text to shrink */}
+            {/* Reduced text size on base breakpoint to text-base (16px), sm:text-lg (18px), lg:text-xl (20px) */}
+            <span className="text-base sm:text-lg lg:text-xl font-bold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent truncate min-w-0 flex-shrink">
               Mukka Nithin
             </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {sections.map((section, index) => (
+          {/* Desktop Navigation - Prevent shrinking */}
+          <div className="hidden lg:flex items-center space-x-1 flex-shrink-0">
+            {sections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
@@ -73,25 +96,27 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Explicitly prevent shrinking */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-slate-300 hover:text-amber-400 transition-colors duration-300"
+            className="lg:hidden p-2 text-slate-300 hover:text-amber-400 transition-colors duration-300 flex-shrink-0" // This ensures the button stays its size
             aria-label="Toggle navigation menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Overlay */}
         {isMenuOpen && (
-          <div className="lg:hidden pb-6 border-t border-slate-700/50">
-            <div className="flex flex-col space-y-2 mt-6">
+           // Mobile menu container positioning and styling
+           // Adjusted top spacing, added background, padding, border, shadow, flex-col for better structure
+          <div className={`lg:hidden fixed inset-x-0 bottom-0 z-40 p-6 overflow-y-auto transition-transform duration-300 ease-in-out ${isMenuOpen ? 'top-[80px]' : 'top-full'}`}>
+             <div className="bg-slate-900/95 backdrop-blur-xl rounded-xl p-6 flex flex-col space-y-4 shadow-lg border border-slate-700">
               {sections.map((section) => (
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  className={`px-4 py-3 text-left font-medium transition-all duration-300 rounded-lg ${
+                  className={`px-4 py-3 text-left text-lg font-medium transition-all duration-300 rounded-lg ${
                     activeSection === section.id
                       ? 'text-amber-400 bg-gradient-to-r from-amber-400/20 to-emerald-400/20 border border-amber-400/30'
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
@@ -100,6 +125,34 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
                   {section.label}
                 </button>
               ))}
+               {/* Social links in mobile menu */}
+                <div className="flex items-center space-x-6 pt-4 justify-center border-t border-slate-700">
+                    <a
+                        href="https://github.com/NithinMukka"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-slate-800 text-slate-400 rounded-lg hover:bg-slate-700 hover:text-amber-400 transition-all duration-300 hover:scale-110"
+                        aria-label="GitHub"
+                    >
+                        <Github size={20} />
+                    </a>
+                    <a
+                        href="https://linkedin.com/in/mukka-nithin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-slate-800 text-slate-400 rounded-lg hover:bg-slate-700 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
+                        aria-label="LinkedIn"
+                    >
+                        <Linkedin size={20} />
+                    </a>
+                    <a
+                        href="mailto:nithinmukka51234@gmail.com"
+                        className="p-3 bg-slate-800 text-slate-400 rounded-lg hover:bg-slate-700 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+                        aria-label="Email"
+                    >
+                        <Mail size={20} />
+                    </a>
+                </div>
             </div>
           </div>
         )}

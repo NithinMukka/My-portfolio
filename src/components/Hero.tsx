@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
 
                 {/* Updated Resume Button (Assuming PDF name) */}
                 <a
-                  href="/mukka_nithin_resume.pdf" // Make sure you place your PDF file in the 'public' folder
+                  href="/My-portfolio/mukka_nithin_resume.pdf" // Updated href for GitHub Pages subdirectory
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-full hover:border-amber-400 hover:text-amber-400 transition-all duration-300"

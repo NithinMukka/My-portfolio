@@ -10,7 +10,7 @@ const Skills: React.FC = () => {
       category: "Languages",
       icon: <Code className="w-6 h-6" />, // Using Code icon
       color: "from-amber-400 to-orange-400",
-      skills: ["C++", "JavaScript", "Python", "Java", "C", "SQL", "HTML", "CSS"]
+      skills: ["C++", "JavaScript", "Python", "C", "SQL", "HTML", "CSS"]
     },
     {
       category: "Technologies & Frameworks", // Updated Category Name
