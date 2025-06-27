@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the build directory
-          path: ./build # <-- CHANGE THIS TO ./dist IF YOU ARE USING VITE
+          path: ./dist # <-- CHANGE THIS TO ./dist IF YOU ARE USING VITE
 
   # Deployment job
   deploy:
