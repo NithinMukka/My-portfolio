@@ -110,7 +110,7 @@ const Contact: React.FC = () => {
                 className="space-y-6"
               >
                 <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://nithinmukka.github.io/My-portfolio/thankyou.html" />
+                {/* <input type="hidden" name="_next" value="https://nithinmukka.github.io/My-portfolio/thankyou.html" /> */}
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <input type="text" name="name" required placeholder="Your Name" className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400" />
