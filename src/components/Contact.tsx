@@ -1,3 +1,4 @@
+// Contact.tsx with FormSubmit integrated, preserving the right-side layout
 import React, { useState } from 'react';
 import { Mail, Send, Github, Linkedin, Twitter, MapPin, Clock } from 'lucide-react';
 
@@ -14,23 +15,7 @@ const Contact: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', subject: '', message: '', projectType: 'web-app' });
-    setIsSubmitting(false);
-    alert('Thanks for reaching out! I\'ll get back to you within 24 hours.');
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const contactMethods = [
@@ -47,10 +32,10 @@ const Contact: React.FC = () => {
       title: "Connect on LinkedIn",
       details: "linkedin.com/in/mukka-nithin",
       description: "Let's connect professionally",
-      link: "https://linkedin.com/in/mukka-nithin",
+      link: "https://www.linkedin.com/in/nithin-mukka-a92345278/",
       color: "from-blue-600 to-blue-400"
     },
-     {
+    {
       icon: <Github className="w-6 h-6" />,
       title: "Explore My Code",
       details: "github.com/NithinMukka",
@@ -70,14 +55,8 @@ const Contact: React.FC = () => {
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: "LinkedIn",
-      url: "https://linkedin.com/in/mukka-nithin",
+      url: "https://www.linkedin.com/in/nithin-mukka-a92345278/",
       color: "hover:text-blue-400"
-    },
-    {
-      icon: <Twitter className="w-5 h-5" />,
-      label: "Twitter",
-      url: "https://twitter.com", // Placeholder - Update if you have a Twitter
-      color: "hover:text-sky-400"
     }
   ];
 
@@ -92,7 +71,6 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden">
-      {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-amber-400/10 to-emerald-400/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
@@ -126,134 +104,46 @@ const Contact: React.FC = () => {
                 <Send className="w-6 h-6 text-amber-400" />
                 <h3 className="text-2xl font-bold text-white">Send a Message</h3>
               </div>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-300"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-300"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
+              <form
+                action="https://formsubmit.co/nithinmukka51234@gmail.com"
+                method="POST"
+                className="space-y-6"
+              >
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://nithinmukka.github.io/My-portfolio/thank-you" />
 
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-slate-300 mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-300"
-                      placeholder="Project Discussion"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="projectType" className="block text-sm font-medium text-slate-300 mb-2">
-                      Project Type
-                    </label>
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      value={formData.projectType}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-300"
-                    >
-                      {projectTypes.map((type) => (
-                        <option key={type.value} value={type.value} className="bg-slate-800">
-                          {type.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  <input type="text" name="name" required placeholder="Your Name" className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400" />
+                  <input type="email" name="email" required placeholder="Email Address" className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400" />
                 </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
-                    Project Details
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Tell me about your project, timeline, budget, and any specific requirements..."
-                  />
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <input type="text" name="subject" required placeholder="Subject" className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400" />
+                  <select name="projectType" className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-amber-400">
+                    {projectTypes.map(p => (
+                      <option key={p.value} value={p.label} className="bg-slate-800">{p.label}</option>
+                    ))}
+                  </select>
                 </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-amber-400 to-emerald-400 text-slate-900 font-semibold rounded-lg hover:shadow-2xl hover:shadow-amber-400/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-slate-900/30 border-t-slate-900 rounded-full animate-spin"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send size={20} />
-                      <span>Send Message</span>
-                    </>
-                  )}
+                <textarea name="message" required rows={6} placeholder="Project Details..." className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-400 resize-none" />
+                <button type="submit" className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-amber-400 to-emerald-400 text-slate-900 font-semibold rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                  <Send size={20} />
+                  <span>Send Message</span>
                 </button>
               </form>
             </div>
           </div>
 
-          {/* Contact Information - Updated */}
+          {/* Right-hand contact details */}
           <div className="space-y-8">
-            {/* Contact Methods */}
             <div className="space-y-6">
               {contactMethods.map((method, index) => (
-                <a
-                  key={index}
-                  href={method.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-105"
-                >
+                <a key={index} href={method.link} target="_blank" rel="noopener noreferrer" className="group block p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-105">
                   <div className="flex items-start space-x-4">
                     <div className={`flex-shrink-0 p-3 bg-gradient-to-r ${method.color} rounded-lg text-white`}>
                       {method.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-white group-hover:text-slate-200">
-                        {method.title}
-                      </h4>
+                      <h4 className="text-lg font-semibold text-white group-hover:text-slate-200">{method.title}</h4>
                       <p className="text-slate-300 font-medium">{method.details}</p>
                       <p className="text-slate-400 text-sm mt-1">{method.description}</p>
                     </div>
@@ -261,44 +151,30 @@ const Contact: React.FC = () => {
                 </a>
               ))}
             </div>
-
-            {/* Availability - Updated Location */}
             <div className="p-6 bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-slate-600 rounded-xl">
               <div className="flex items-center space-x-3 mb-4">
                 <Clock className="w-5 h-5 text-emerald-400" />
                 <h4 className="text-lg font-semibold text-white">Availability</h4>
               </div>
               <div className="space-y-2 text-slate-300">
-                {/* CHANGED <p> to <div> here */}
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                   <span>Available for new projects</span>
                 </div>
-                {/* CHANGED <p> to <div> here */}
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4 text-slate-400" />
-                  <span>Chennai, India (IST)</span> {/* Updated Location/Timezone */}
+                  <span>Chennai, India (IST)</span>
                 </div>
-                {/* CHANGED <p> to <div> here */}
-                <div className="text-slate-400 text-sm mt-3"> {/* This one didn't have a div child, but changing for consistency */}
+                <div className="text-slate-400 text-sm mt-3">
                   Typically respond within 24 hours
                 </div>
               </div>
             </div>
-
-            {/* Social Links - Updated */}
             <div className="p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl">
               <h4 className="text-lg font-semibold text-white mb-4">Connect Online</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 bg-slate-700 text-slate-400 rounded-lg hover:bg-slate-600 ${social.color} transition-all duration-300 hover:scale-110`}
-                    aria-label={social.label}
-                  >
+                  <a key={index} href={social.url} target="_blank" rel="noopener noreferrer" className={`p-3 bg-slate-700 text-slate-400 rounded-lg hover:bg-slate-600 ${social.color} transition-all duration-300 hover:scale-110`} aria-label={social.label}>
                     {social.icon}
                   </a>
                 ))}

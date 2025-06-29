@@ -73,15 +73,16 @@ const Hero: React.FC = () => {
                 </button>
 
                 {/* Updated Resume Button (Assuming PDF name) */}
-                <a
-                  href="/My-portfolio/mukka_nithin_resume.pdf" // Updated href for GitHub Pages subdirectory
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-full hover:border-amber-400 hover:text-amber-400 transition-all duration-300"
-                >
-                  <Zap size={20} />
-                  <span>View Resume</span>
-                </a>
+                  <a
+                    href="https://drive.google.com/file/d/1ekYBQ8m5y59uPl4WtpzegBfiUI_qefHw/view?usp=sharing"
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-full hover:border-amber-400 hover:text-amber-400 transition-all duration-300"
+                  >
+                    <Zap size={20} />
+                    <span>View Resume</span>
+                  </a>
               </div>
 
               {/* Updated Social Links */}
@@ -98,7 +99,7 @@ const Hero: React.FC = () => {
                     <Github size={20} />
                   </a>
                   <a
-                    href="https://linkedin.com/in/mukka-nithin" // Updated LinkedIn Link
+                    href="https://www.linkedin.com/in/nithin-mukka-a92345278/" // Updated LinkedIn Link
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-slate-800 text-slate-400 rounded-lg hover:bg-slate-700 hover:text-emerald-400 transition-all duration-300 hover:scale-110"

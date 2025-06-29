@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-900">
       <Navigation activeSection={activeSection} />
-      <main>
+      <main className="pt-24"> {/* Prevent navbar overlap */}
         <Hero />
         <About />
         <Skills />
@@ -22,16 +22,12 @@ function App() {
         <Contact />
       </main>
 
-      {/* Footer */}
       <footer className="bg-slate-950 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"> {/* Responsive columns */}
             <div className="space-y-4">
-              {/* Updated Logo/Site Title in Footer */}
               <div className="flex items-center space-x-3">
-                {/* Footer Logo Element */}
                 <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-lg flex-shrink-0"></div>
-                {/* Footer Site Title */}
                 <span className="text-xl font-bold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
                   Mukka Nithin
                 </span>
@@ -78,7 +74,6 @@ function App() {
 
           <div className="border-t border-slate-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              {/* Updated Copyright */}
               <p className="text-slate-500 text-sm">
                 © 2024 Mukka Nithin. Built with passion.
               </p>
@@ -91,10 +86,9 @@ function App() {
                   <span>TypeScript</span>
                   <span>•</span>
                   <span>Tailwind</span>
-                   {/* Added Flaticon attribution link here */}
-                   <span className="text-slate-600">
-                     <a href="https://www.flaticon.com/free-icons/portfolio" title="portfolio icons" className="hover:text-slate-400 transition-colors duration-300">Portfolio icons</a> created by <a href="https://www.freepik.com" title="Freepik" className="hover:text-slate-400 transition-colors duration-300">Freepik</a> - Flaticon
-                   </span>
+                  <span className="text-slate-600">
+                    <a href="https://www.flaticon.com/free-icons/portfolio" title="portfolio icons" className="hover:text-slate-400 transition-colors duration-300">Portfolio icons</a> created by <a href="https://www.freepik.com" title="Freepik" className="hover:text-slate-400 transition-colors duration-300">Freepik</a> - Flaticon
+                  </span>
                 </div>
               </div>
             </div>
