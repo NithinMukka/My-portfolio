@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
       subtitle: "Pathfinding Web App",
       description: "Developed a web application using the A* pathfinding algorithm to calculate optimal airlift routes between global airports. Integrated dynamic routing based on user-selected priorities (distance, fuel, weather) and real-time weather updates to avoid hazardous conditions. Designed and implemented a visual interface (React, SVG, TypeScript) displaying the network map, routes, and aircraft movement for intuitive user interaction.",
       // image: "https://images.pexels.com/photos/...", // Placeholder
-      tags: ["ReactJS", "TypeScript", "A*", "SVG"],
+      tags: ["ReactJS", "TypeScript"],
       liveUrl: "#", // Placeholder
       githubUrl: "https://github.com/NithinMukka/Smart-Router",
       date: "September 2024"

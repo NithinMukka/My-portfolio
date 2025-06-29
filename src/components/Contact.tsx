@@ -70,12 +70,6 @@ const Contact: React.FC = () => {
       label: "LinkedIn",
       url: "https://linkedin.com/in/mukka-nithin",
       color: "hover:text-blue-400"
-    },
-    {
-      icon: <Twitter className="w-5 h-5" />,
-      label: "Twitter",
-      url: "https://twitter.com",
-      color: "hover:text-sky-400"
     }
   ];
 

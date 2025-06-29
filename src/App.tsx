@@ -75,7 +75,7 @@ function App() {
           <div className="border-t border-slate-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-slate-500 text-sm">
-                © 2024 Mukka Nithin. Built with passion.
+                © 2025 Mukka Nithin. Built with passion.
               </p>
               <div className="flex items-center space-x-4 text-slate-500 text-sm">
                 <span>Made with</span>
