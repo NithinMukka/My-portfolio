@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
 
                 {/* Updated Resume Button (Assuming PDF name) */}
                   <a
-                    href="https://drive.google.com/file/d/1ekYBQ8m5y59uPl4WtpzegBfiUI_qefHw/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1IbemGzJKi4YYgyqrEqdLJJA0jmHXVNHk/view?usp=sharing"
                     download
                     target="_blank"
                     rel="noopener noreferrer"
