@@ -62,7 +62,7 @@ const About: React.FC = () => {
                  Currently, I'm interning at Dell Technologies, focusing on backend development, test automation, and data visualization. I enjoy the challenge of creating reliable, scalable systems and thrive in fast-paced engineering environments.
               </p>
                <p>
-                While the resume captures my professional and academic highlights, this space lets me share the *why* behind my work – the commitment to technical excellence, user-centered design, and the continuous pursuit of learning.
+                While the resume captures my professional and academic highlights, this space lets me share the "why" behind my work – the commitment to technical excellence, user-centered design, and the continuous pursuit of learning.
               </p>
             </div>
 
