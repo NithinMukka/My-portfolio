@@ -1,161 +1,122 @@
 import React from 'react';
-// Removed ArrowUpRight import as it was unused in the previous update
-import { ExternalLink, Github, Star, CalendarDays } from 'lucide-react'; // Keep used icons
+import { ExternalLink, Github, ArrowUpRight, CalendarDays } from 'lucide-react';
+import Reveal from './Reveal';
 
 const Projects: React.FC = () => {
-  // Using project data directly from the resume
+  // Project data taken directly from the resume
   const projectsData = [
     {
-      title: "Profoot",
-      subtitle: "Football Analytics Platform",
-      description: "Engineered a full-stack football analytics platform integrating personalized training/diet plans, injury tracking, and interactive performance dashboards. Developed a community forum within the platform (React, Node.js) to facilitate user interaction and support.",
-      // image: "https://images.pexels.com/photos/...", // Placeholder - Consider adding relevant images or icons
-      tags: ["ReactJS", "NodeJS", "MongoDB", "Tailwind CSS"],
-      liveUrl: "#", // Placeholder - Add live URL if available
-      githubUrl: "https://github.com/NithinMukka/Profoot",
-      date: "Feb 2025"
+      title: "Scalable Movie Booking API",
+      subtitle: "High-Concurrency Backend",
+      description:
+        "A high-concurrency movie booking backend built with FastAPI and PostgreSQL, using Redis caching to cut database read latency on high-traffic endpoints. Containerized with Docker and deployed on Render with a CI/CD-ready architecture, plus secure config management and automated database backups for production-grade integrity.",
+      tags: ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker"],
+      liveUrl: "https://movie-api-5jid.onrender.com/docs",
+      githubUrl: "https://github.com/NithinMukka/Movie-API",
+      date: "May 2026"
     },
     {
       title: "Smart Airlift Router",
       subtitle: "Pathfinding Web App",
-      description: "Developed a web application using the A* pathfinding algorithm to calculate optimal airlift routes between global airports. Integrated dynamic routing based on user-selected priorities (distance, fuel, weather) and real-time weather updates to avoid hazardous conditions. Designed and implemented a visual interface (React, SVG, TypeScript) displaying the network map, routes, and aircraft movement for intuitive user interaction.",
-      // image: "https://images.pexels.com/photos/...", // Placeholder
-      tags: ["ReactJS", "TypeScript"],
-      liveUrl: "#", // Placeholder
+      description:
+        "A routing engine using the A* pathfinding algorithm to compute optimal airlift routes between global airports, recalculating in real time from live weather API data. An interactive interface visualizes the network map, routes, and aircraft movement.",
+      tags: ["TypeScript", "Algorithms", "REST APIs"],
+      liveUrl: "https://smart-router.vercel.app",
       githubUrl: "https://github.com/NithinMukka/Smart-Router",
       date: "September 2024"
-    },
-    {
-      title: "QR Code Generator",
-      subtitle: "Responsive Web App",
-      description: "Developed a responsive web application converting text inputs to QR codes, handling over 1000 requests daily. Integrated external APIs to guarantee 99.9% accuracy in QR code generation. Optimized frontend performance by 40% through efficient state management and lazy loading techniques.",
-      // image: "https://images.pexels.com/photos/...", // Placeholder
-      tags: ["Tailwind", "ReactJS", "APIs", "Performance Optimization"],
-      liveUrl: "#", // Placeholder
-      githubUrl: "#", // Placeholder - Resume doesn't list GitHub for this one
-      date: "May 2024"
     }
   ];
 
   return (
-    <section id="projects" className="py-24 bg-slate-50 relative overflow-hidden">
-      {/* Background Pattern - Kept as is */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-40 left-20 w-32 h-32 border-2 border-slate-400 rotate-12"></div>
-        <div className="absolute bottom-40 right-20 w-24 h-24 bg-slate-400 rounded-full"></div>
-        <div className="absolute top-20 right-40 w-16 h-16 border border-slate-400 rotate-45"></div>
+    <section id="projects" className="py-28 bg-slate-950 relative overflow-hidden border-t border-slate-900">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-             {/* Kept Star icon as a visual element */}
-            <Star className="w-6 h-6 text-amber-400 fill-current" />
-            <span className="text-slate-600 font-medium">My Portfolio</span> {/* Updated Title */}
-            <Star className="w-6 h-6 text-amber-400 fill-current" />
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative">
+        <Reveal className="mb-16">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-emerald-400 font-mono text-sm">04</span>
+            <span className="w-8 h-px bg-emerald-400/60"></span>
+            <span className="text-slate-400 font-medium tracking-wide uppercase text-sm">Projects</span>
           </div>
-
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            Projects That
-            <span className="block bg-gradient-to-r from-amber-500 to-emerald-500 bg-clip-text text-transparent">
-              Showcase My Skills
-            </span>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white">
+            Things I've <span className="text-emerald-400">built</span>
           </h2>
+        </Reveal>
 
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Exploring various technologies and approaches to build functional and innovative applications.
-          </p>
-        </div>
-
-        {/* Projects Grid - Using a simplified grid layout for all projects */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Adjusted grid columns */}
+        <div className="grid md:grid-cols-2 gap-6">
           {projectsData.map((project, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-300 flex flex-col h-full" // Added flex and h-full for consistent height
-            >
-              {/* Using Project Title and Subtitle */}
-               <div className="flex items-start justify-between mb-4">
-                  <h4 className="text-xl font-bold text-slate-900 group-hover:text-slate-700">
-                    {project.title}
-                  </h4>
-                  <div className="flex space-x-2 flex-shrink-0"> {/* Added flex-shrink-0 */}
-                     {/* Live Link */}
-                     {project.liveUrl && project.liveUrl !== '#' && (
-                       <a
-                         href={project.liveUrl}
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         className="p-2 text-slate-400 hover:text-amber-500 transition-colors duration-300"
-                         aria-label={`View live version of ${project.title}`}
-                       >
-                         <ExternalLink size={18} /> {/* Slightly smaller icon */}
-                       </a>
-                     )}
-                     {/* Github Link */}
-                     {project.githubUrl && project.githubUrl !== '#' && (
-                       <a
-                         href={project.githubUrl}
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         className="p-2 text-slate-400 hover:text-emerald-500 transition-colors duration-300"
-                          aria-label={`View source code for ${project.title} on GitHub`}
-                       >
-                         <Github size={18} /> {/* Slightly smaller icon */}
-                       </a>
-                     )}
+            <Reveal key={index} delay={index * 90}>
+              <div className="group relative h-full flex flex-col rounded-2xl border border-slate-800 bg-slate-900/40 p-8 hover:border-emerald-500/40 hover:bg-slate-900/70 transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-emerald-400/80 text-sm font-medium mt-1">{project.subtitle}</p>
                   </div>
-               </div>
+                  <div className="flex gap-1.5 flex-shrink-0">
+                    {project.githubUrl && project.githubUrl !== '#' && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-slate-500 rounded-lg hover:bg-slate-800 hover:text-emerald-400 transition-all duration-300"
+                        aria-label={`View source for ${project.title}`}
+                      >
+                        <Github size={18} />
+                      </a>
+                    )}
+                    {project.liveUrl && project.liveUrl !== '#' && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-slate-500 rounded-lg hover:bg-slate-800 hover:text-emerald-400 transition-all duration-300"
+                        aria-label={`View live ${project.title}`}
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
+                </div>
 
-              {/* Description */}
-              <p className="text-slate-600 mb-4 leading-relaxed flex-grow"> {/* Added flex-grow */}
-                {project.description}
-              </p>
+                <p className="text-slate-400 leading-relaxed flex-grow">{project.description}</p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="px-3 py-1 bg-slate-100 text-slate-600 text-sm rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-1.5 mt-6 pt-5 border-t border-slate-800 text-slate-500 text-sm">
+                  <CalendarDays size={15} className="text-slate-600" />
+                  <span>{project.date}</span>
+                </div>
               </div>
-
-              {/* Date/Status - Using Date from resume */}
-              <div className="flex items-center justify-between mt-auto"> {/* Aligned to bottom */}
-                 <div className="flex items-center space-x-1 text-slate-500 text-sm">
-                     <CalendarDays size={16} className="text-slate-400"/>
-                     <span>{project.date}</span> {/* Display project date */}
-                 </div>
-                {project.subtitle && ( // Optionally show subtitle here or as a status
-                     <span className="px-3 py-1 bg-gradient-to-r from-amber-100 to-emerald-100 text-slate-700 text-sm font-medium rounded-full">
-                       {project.subtitle}
-                     </span>
-                )}
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-
-        {/* Call to Action - Updated */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-full">
-            <span className="font-medium">Find more projects on</span>
-            <a
-              href="https://github.com/NithinMukka" // Updated GitHub Profile Link
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors duration-300"
-            >
-              <Github size={16} />
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
+        {/* CTA */}
+        <Reveal className="mt-12 flex justify-center">
+          <a
+            href="https://github.com/NithinMukka"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-slate-700 text-slate-200 font-medium hover:border-emerald-500/50 hover:text-white transition-all duration-300"
+          >
+            <Github size={18} />
+            More on GitHub
+            <ArrowUpRight size={16} className="text-slate-500 group-hover:text-emerald-400 transition-colors duration-300" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );

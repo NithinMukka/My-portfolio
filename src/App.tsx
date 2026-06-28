@@ -1,97 +1,75 @@
 import React from 'react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 
 function App() {
-  const sectionIds = ['hero', 'about', 'skills', 'projects', 'contact'];
+  const sectionIds = ['hero', 'about', 'experience', 'skills', 'projects', 'contact'];
   const activeSection = useIntersectionObserver(sectionIds);
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-slate-950">
       <Navigation activeSection={activeSection} />
-      <main className="pt-24"> {/* Prevent navbar overlap */}
+      <main>
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
         <Contact />
       </main>
 
-      <footer className="bg-slate-950 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"> {/* Responsive columns */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-lg flex-shrink-0"></div>
-                <span className="text-xl font-bold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
-                  Mukka Nithin
-                </span>
-              </div>
-              <p className="text-slate-400 leading-relaxed">
-                Crafting digital experiences driven by a passion for problem-solving and software engineering.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-white font-semibold">Quick Links</h4>
-              <div className="space-y-2">
-                {['About', 'Skills', 'Projects', 'Contact'].map((link) => (
-                  <button
-                    key={link}
-                    onClick={() => {
-                      const element = document.getElementById(link.toLowerCase());
-                      if (element) element.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="block text-slate-400 hover:text-amber-400 transition-colors duration-300"
-                  >
-                    {link}
-                  </button>
-                ))}
+      <footer className="bg-slate-950 border-t border-slate-900">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="flex items-center gap-2.5">
+              <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-display font-bold">
+                MN
+              </span>
+              <div>
+                <span className="block font-display font-semibold text-white">Mukka Nithin</span>
+                <span className="block text-sm text-slate-500">Software Engineer</span>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h4 className="text-white font-semibold">Let's Connect</h4>
-              <p className="text-slate-400">
-                Have a project in mind or just want to chat about tech? Feel free to reach out!
-              </p>
-              <button
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-amber-400 to-emerald-400 text-slate-900 font-medium rounded-lg hover:shadow-lg transition-all duration-300"
-              >
-                <span>Get In Touch</span>
-              </button>
+            <nav className="flex flex-wrap gap-x-6 gap-y-2">
+              {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((link) => (
+                <button
+                  key={link}
+                  onClick={() => document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-sm text-slate-400 hover:text-emerald-400 transition-colors duration-300"
+                >
+                  {link}
+                </button>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-3">
+              <a href="https://github.com/NithinMukka" target="_blank" rel="noopener noreferrer" className="p-2.5 text-slate-400 rounded-lg border border-slate-800 hover:border-emerald-500/40 hover:text-emerald-400 transition-all duration-300" aria-label="GitHub">
+                <Github size={18} />
+              </a>
+              <a href="https://www.linkedin.com/in/nithin-mukka-a92345278/" target="_blank" rel="noopener noreferrer" className="p-2.5 text-slate-400 rounded-lg border border-slate-800 hover:border-emerald-500/40 hover:text-emerald-400 transition-all duration-300" aria-label="LinkedIn">
+                <Linkedin size={18} />
+              </a>
+              <a href="mailto:nithinmukka51234@gmail.com" className="p-2.5 text-slate-400 rounded-lg border border-slate-800 hover:border-emerald-500/40 hover:text-emerald-400 transition-all duration-300" aria-label="Email">
+                <Mail size={18} />
+              </a>
             </div>
           </div>
 
-          <div className="border-t border-slate-800 mt-12 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-slate-500 text-sm">
-                © 2025 Mukka Nithin. Built with passion.
-              </p>
-              <div className="flex items-center space-x-4 text-slate-500 text-sm">
-                <span>Made with</span>
-                <div className="flex items-center space-x-2">
-                  <span className="text-red-400">♥</span>
-                  <span>React</span>
-                  <span>•</span>
-                  <span>TypeScript</span>
-                  <span>•</span>
-                  <span>Tailwind</span>
-                  <span className="text-slate-600">
-                    <a href="https://www.flaticon.com/free-icons/portfolio" title="portfolio icons" className="hover:text-slate-400 transition-colors duration-300">Portfolio icons</a> created by <a href="https://www.freepik.com" title="Freepik" className="hover:text-slate-400 transition-colors duration-300">Freepik</a> - Flaticon
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div className="border-t border-slate-900 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-slate-600">
+            <p>© 2026 Mukka Nithin. All rights reserved.</p>
+            <p>
+              Built with React, TypeScript & Tailwind ·{' '}
+              <a href="https://www.flaticon.com/free-icons/portfolio" title="portfolio icons" className="hover:text-slate-400 transition-colors duration-300">Icon</a> by{' '}
+              <a href="https://www.freepik.com" title="Freepik" className="hover:text-slate-400 transition-colors duration-300">Freepik</a>
+            </p>
           </div>
         </div>
       </footer>

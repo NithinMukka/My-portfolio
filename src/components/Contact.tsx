@@ -1,234 +1,172 @@
 import React, { useState } from 'react';
-import { Mail, Send, Github, Linkedin, Twitter, MapPin, Clock } from 'lucide-react';
+import { Mail, Send, Github, Linkedin, MapPin, CheckCircle2 } from 'lucide-react';
+import Reveal from './Reveal';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: '',
-    projectType: 'web-app'
+    message: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleMailTo = () => {
-    const mailtoLink = `mailto:nithinmukka51234@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Hi, I'm ${formData.name} (${formData.email})\n\n${formData.message}\n\nProject Type: ${formData.projectType}`
+    const mailtoLink = `mailto:nithinmukka51234@gmail.com?subject=${encodeURIComponent(
+      formData.subject
+    )}&body=${encodeURIComponent(
+      `Hi Nithin,\n\nMy name is ${formData.name} (${formData.email}).\n\n${formData.message}`
     )}`;
     window.location.href = mailtoLink;
   };
 
-  const projectTypes = [
-    { value: 'web-app', label: 'Web Application' },
-    { value: 'mobile-app', label: 'Mobile App' },
-    { value: 'e-commerce', label: 'E-commerce Site' },
-    { value: 'portfolio', label: 'Portfolio Website' },
-    { value: 'consulting', label: 'Technical Consulting' },
-    { value: 'other', label: 'Other' }
-  ];
-
   const contactMethods = [
     {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email Me",
+      icon: <Mail className="w-5 h-5" />,
+      title: "Email",
       details: "nithinmukka51234@gmail.com",
-      description: "For project inquiries and collaborations",
-      link: "mailto:nithinmukka51234@gmail.com",
-      color: "from-amber-400 to-orange-400"
-    },
-    {
-      icon: <Linkedin className="w-6 h-6" />,
-      title: "Connect on LinkedIn",
-      details: "linkedin.com/in/mukka-nithin",
-      description: "Let's connect professionally",
-      link: "https://www.linkedin.com/in/nithin-mukka-a92345278/",
-      color: "from-blue-600 to-blue-400"
-    },
-    {
-      icon: <Github className="w-6 h-6" />,
-      title: "Explore My Code",
-      details: "github.com/NithinMukka",
-      description: "See my repositories and contributions",
-      link: "https://github.com/NithinMukka",
-      color: "from-slate-700 to-slate-600"
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github className="w-5 h-5" />,
-      label: "GitHub",
-      url: "https://github.com/NithinMukka",
-      color: "hover:text-slate-400"
+      link: "mailto:nithinmukka51234@gmail.com"
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
-      label: "LinkedIn",
-      url: "https://linkedin.com/in/mukka-nithin",
-      color: "hover:text-blue-400"
+      title: "LinkedIn",
+      details: "linkedin.com/in/mukka-nithin",
+      link: "https://www.linkedin.com/in/nithin-mukka-a92345278/"
+    },
+    {
+      icon: <Github className="w-5 h-5" />,
+      title: "GitHub",
+      details: "github.com/NithinMukka",
+      link: "https://github.com/NithinMukka"
     }
   ];
 
   return (
-    <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-amber-400/10 to-emerald-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
+    <section id="contact" className="py-28 bg-slate-950 relative overflow-hidden border-t border-slate-900">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <div className="w-12 h-1 bg-gradient-to-r from-amber-400 to-emerald-400"></div>
-            <span className="text-slate-400 font-medium">Get In Touch</span>
-            <div className="w-12 h-1 bg-gradient-to-r from-emerald-400 to-blue-400"></div>
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative">
+        <Reveal className="mb-16 text-center">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <span className="text-emerald-400 font-mono text-sm">05</span>
+            <span className="w-8 h-px bg-emerald-400/60"></span>
+            <span className="text-slate-400 font-medium tracking-wide uppercase text-sm">Contact</span>
           </div>
-
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Let's Discuss Your Project
-            <span className="block bg-gradient-to-r from-amber-400 via-emerald-400 to-blue-400 bg-clip-text text-transparent">
-              Or Connect
-            </span>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+            Let's <span className="text-emerald-400">talk</span>
           </h2>
-
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Have an idea that needs bringing to life, or want to connect about tech? I'd love to hear from you.
+          <p className="text-lg text-slate-400 max-w-xl mx-auto">
+            I'm open to software engineering roles and interesting collaborations. Have a question or
+            an opportunity? My inbox is always open.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
-              <div className="flex items-center space-x-3 mb-8">
-                <Send className="w-6 h-6 text-amber-400" />
-                <h3 className="text-2xl font-bold text-white">Send a Message</h3>
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Form */}
+          <Reveal className="lg:col-span-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-8">
+              <div className="flex items-center gap-3 mb-7">
+                <Send className="w-5 h-5 text-emerald-400" />
+                <h3 className="text-xl font-semibold text-white">Send a message</h3>
               </div>
 
-              <form onSubmit={(e) => { e.preventDefault(); handleMailTo(); }} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleMailTo();
+                }}
+                className="space-y-5"
+              >
+                <div className="grid sm:grid-cols-2 gap-5">
                   <input
                     type="text"
                     name="name"
                     required
-                    placeholder="Your Name"
+                    placeholder="Your name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white"
+                    className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:border-emerald-500/60 focus:outline-none focus:ring-1 focus:ring-emerald-500/40"
                   />
                   <input
                     type="email"
                     name="email"
                     required
-                    placeholder="Email Address"
+                    placeholder="Email address"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white"
+                    className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:border-emerald-500/60 focus:outline-none focus:ring-1 focus:ring-emerald-500/40"
                   />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <input
-                    type="text"
-                    name="subject"
-                    required
-                    placeholder="Subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white"
-                  />
-                  <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white"
-                  >
-                    {projectTypes.map((type) => (
-                      <option key={type.value} value={type.value} className="bg-slate-800">
-                        {type.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <input
+                  type="text"
+                  name="subject"
+                  required
+                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:border-emerald-500/60 focus:outline-none focus:ring-1 focus:ring-emerald-500/40"
+                />
                 <textarea
                   name="message"
                   required
                   rows={6}
-                  placeholder="Project Details..."
+                  placeholder="Tell me a bit about it..."
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white"
+                  className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:border-emerald-500/60 focus:outline-none focus:ring-1 focus:ring-emerald-500/40 resize-none"
                 />
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-amber-400 to-emerald-400 text-slate-900 font-semibold rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                  className="group w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-emerald-500 text-slate-950 font-semibold rounded-xl hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
                 >
-                  <Send size={20} />
-                  <span>Send Message</span>
+                  <Send size={18} />
+                  Send message
                 </button>
               </form>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="space-y-8">
-            <div className="space-y-6">
-              {contactMethods.map((method, index) => (
-                <a key={index} href={method.link} target="_blank" rel="noopener noreferrer"
-                  className="group block p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl hover:border-slate-600 transition-all duration-300 hover:scale-105"
+          {/* Side info */}
+          <div className="lg:col-span-2 space-y-4">
+            {contactMethods.map((method, index) => (
+              <Reveal key={index} delay={index * 80}>
+                <a
+                  href={method.link}
+                  target={method.link.startsWith('http') ? '_blank' : undefined}
+                  rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group flex items-center gap-4 p-5 rounded-2xl border border-slate-800 bg-slate-900/40 hover:border-emerald-500/40 hover:bg-slate-900/70 transition-all duration-300"
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className={`p-3 bg-gradient-to-r ${method.color} rounded-lg text-white`}>
-                      {method.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-white group-hover:text-slate-200">{method.title}</h4>
-                      <p className="text-slate-300 font-medium">{method.details}</p>
-                      <p className="text-slate-400 text-sm mt-1">{method.description}</p>
-                    </div>
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors duration-300">
+                    {method.icon}
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-sm font-semibold text-white">{method.title}</h4>
+                    <p className="text-slate-400 text-sm truncate">{method.details}</p>
                   </div>
                 </a>
-              ))}
-            </div>
+              </Reveal>
+            ))}
 
-            <div className="p-6 bg-gradient-to-br from-slate-800/50 to-slate-700/50 border border-slate-600 rounded-xl">
-              <div className="flex items-center space-x-3 mb-4">
-                <Clock className="w-5 h-5 text-emerald-400" />
-                <h4 className="text-lg font-semibold text-white">Availability</h4>
-              </div>
-              <div className="space-y-2 text-slate-300">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                  <span>Available for new projects</span>
+            <Reveal delay={240}>
+              <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  <h4 className="text-sm font-semibold text-white">Open to new opportunities</h4>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-slate-400" />
-                  <span>Chennai, India (IST)</span>
-                </div>
-                <div className="text-slate-400 text-sm mt-3">
-                  Typically respond within 24 hours
+                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <MapPin size={15} className="text-slate-500" />
+                  <span>Chennai, India (IST) · Typically replies within 24h</span>
                 </div>
               </div>
-            </div>
-
-            <div className="p-6 bg-slate-800/50 border border-slate-700 rounded-xl">
-              <h4 className="text-lg font-semibold text-white mb-4">Connect Online</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 bg-slate-700 text-slate-400 rounded-lg hover:bg-slate-600 ${social.color} transition-all duration-300 hover:scale-110`}
-                    aria-label={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>
