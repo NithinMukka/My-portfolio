@@ -11,7 +11,7 @@ const Experience: React.FC = () => {
       location: "Onsite / India",
       period: "Jan 2026 – June 2026",
       points: [
-        "Migrated a test suite of 14,700 tests (FUTI + DUTI) from Python 3.6 to 3.13 as part of a 4-member team, resolving deprecated-library and version-incompatibility issues across a Python, Perl, and Bash codebase.",
+        "Migrated a test suite of 7,700 tests (FUTI + DUTI) from Python 3.6 to 3.13 as part of a 4-member team, resolving deprecated-library and version-incompatibility issues across a Python, Perl, and Bash codebase.",
         "Root-caused and fixed 15+ failing test cases inside Athena, an internal OOP-based test execution framework, and used YAML-driven configuration to decouple test logic from environment parameters for 2 POCs.",
         "Reduced post-migration test execution failures and authored a structured migration playbook later proposed for CI/CD-integrated, automated rollout to other teams.",
         "Built a multithreaded Python tool to analyze Customer Found Defect (CFD) flow across 8 product components, parsing thousands of Jira ticket histories (via REST endpoints) to quantify direct vs. hopped assignments between component teams; added caching to cut repeated-fetch overhead and speed up large-scale ticket analysis."
@@ -35,7 +35,7 @@ const Experience: React.FC = () => {
     {
       institution: "Vellore Institute of Technology",
       detail: "B.Tech – Computer Science and Engineering",
-      highlight: "CGPA 9.20",
+      highlight: "CGPA 9.26",
       location: "Chennai, Tamil Nadu",
       period: "Sep 2022 – June 2026"
     },

@@ -8,17 +8,17 @@ const Skills: React.FC = () => {
     {
       category: "Languages",
       icon: <Code className="w-5 h-5" />,
-      skills: ["Python", "C++", "SQL", "JavaScript", "C", "HTML", "CSS"]
+      skills: ["Python", "C++", "SQL", "JavaScript"]
     },
     {
       category: "Backend & Data",
       icon: <Database className="w-5 h-5" />,
-      skills: ["FastAPI", "Flask", "PostgreSQL", "Redis", "MongoDB", "MySQL", "REST APIs"]
+      skills: ["FastAPI", "Flask", ,"Node", "PostgreSQL", "Redis", "MongoDB", "REST APIs"]
     },
     {
       category: "Tools & Infra",
       icon: <Wrench className="w-5 h-5" />,
-      skills: ["Docker", "Render", "Git", "Github", "Jenkins CI/CD", "Grafana", "VS Code", "IntelliJ"]
+      skills: ["Docker", "Render", "Git", "Github", "Jenkins CI/CD", "Grafana", "VS Code"]
     },
     {
       category: "Soft Skills",

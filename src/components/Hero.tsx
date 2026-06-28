@@ -91,8 +91,8 @@ const Hero: React.FC = () => {
 
             {/* Stat strip */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80 max-w-lg">
-              <Stat value={9.2} decimals={2} label="CGPA" />
-              <Stat value={14700} suffix="+" label="Tests migrated" />
+              <Stat value={9.26} decimals={2} label="CGPA" />
+              <Stat value={7700} suffix="+" label="Tests migrated" />
               <Stat value={80} suffix="%" label="Manual effort cut" />
             </div>
 
@@ -156,7 +156,7 @@ const Hero: React.FC = () => {
                   <span className="text-slate-200">impact --highlights</span>
                 </div>
                 <ul className="text-slate-400 pl-4 space-y-1">
-                  <li>• Migrated 14,700 tests · Python 3.6 → 3.13</li>
+                  <li>• Migrated 7,700 tests · Python 3.6 → 3.13</li>
                   <li>• Flask REST APIs + JSON→MySQL pipeline</li>
                   <li>• 100% CI/CD automation, Jenkins + Groovy</li>
                 </ul>
